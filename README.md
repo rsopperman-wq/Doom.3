@@ -61,7 +61,7 @@ class DoomServer(http.server.SimpleHTTPRequestHandler):
         self.send_header("Cross-Origin-Opener-Policy", "same-origin")
         self.send_header("Cross-Origin-Embedder-Policy", "require-corp")
         super().end_headers()
-
+Big thankks to Gabrielcuvillier the wasm project creator assets pulled from https://github.com/gabrielcuvillier/d3wasm go check him out
 PORT = 8080
 print(f"Doom 3 Server starting on port {PORT}...")
 with socketserver.TCPServer(("", PORT), DoomServer) as httpd:
