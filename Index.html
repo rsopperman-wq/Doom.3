@@ -1,31 +1,40 @@
 <!doctype html>
-<html lang="en-us">
+<html>
 <head>
-  <base href="https://wasm.continuation-labs.com/d3wasm/">
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Doom 3 Fixed</title>
-  <style>
-    body { background-color: black; color: #0f0; text-align: center; margin-top: 20%; font-family: monospace; }
-    canvas { display: block; margin: 0 auto; width: 800px; height: 600px; }
-  </style>
+    <meta charset="utf-8">
+    <title>Doom 3 - Codespace Edition</title>
+    <style>
+        body { background: #000; color: #0f0; text-align: center; font-family: 'Courier New', monospace; }
+        canvas { width: 800px; height: 600px; border: 2px solid #222; background: #111; }
+        #status { margin: 20px; font-weight: bold; text-transform: uppercase; }
+    </style>
 </head>
 <body>
-  <div id="status">Connecting to Engine...</div>
-  <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+    <div id="status">Engine Loaded. Initializing Game Data...</div>
+    <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
 
-  <script>
-    var Module = {
-      canvas: document.getElementById('canvas'),
-      setStatus: function(text) {
-        document.getElementById('status').innerHTML = text;
-      }
-    };
-    // Force load the engine
-    var s = document.createElement('script');
-    s.src = "d3wasm.js";
-    s.async = true;
-    document.body.appendChild(s);
-  </script>
+    <script>
+        var statusElement = document.getElementById('status');
+        var Module = {
+            canvas: document.getElementById('canvas'),
+            setStatus: function(text) { 
+                statusElement.innerHTML = text || "Doom 3 is Ready"; 
+            },
+            locateFile: function(path) {
+                // Fetch the massive data file from the mirror
+                if (path.endsWith(".data")) {
+                    return "https://d3wasm.com/demo_bootstrap.data";
+                }
+                // Use the d3wasm.wasm you just curled into your folder
+                return path; 
+            }
+        };
+
+        // Load the local script you curled
+        var s = document.createElement('script');
+        s.src = "d3wasm.js";
+        s.async = true;
+        document.body.appendChild(s);
+    </script>
 </body>
 </html>
