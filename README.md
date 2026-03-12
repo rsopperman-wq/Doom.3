@@ -13,14 +13,16 @@ Select the Codespaces tab and click Create codespace.
 2. Download the Engine Files
 The engine files are not tracked in this repo to save space. Run these commands in the terminal to fetch them:
 
-Bash
+
 curl -L -o d3wasm.js https://cdn.jsdelivr.net/gh/gabrielcuvillier/d3wasm@master/d3wasm.js
 curl -L -o d3wasm.wasm https://cdn.jsdelivr.net/gh/gabrielcuvillier/d3wasm@master/d3wasm.wasm
+
 3. Start the Secure Server
 Run the included Python script to host the game with the necessary security headers:
 
-Bash
+
 python3 serv.py
+
 4. Open the Game
 Go to the Ports tab at the bottom of the screen.
 
