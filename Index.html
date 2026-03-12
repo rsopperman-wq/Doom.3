@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+  <base href="https://wasm.continuation-labs.com/d3wasm/">
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Doom 3 Fixed</title>
+  <style>
+    body { background-color: black; color: #0f0; text-align: center; margin-top: 20%; font-family: monospace; }
+    canvas { display: block; margin: 0 auto; width: 800px; height: 600px; }
+  </style>
+</head>
+<body>
+  <div id="status">Connecting to Engine...</div>
+  <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+
+  <script>
+    var Module = {
+      canvas: document.getElementById('canvas'),
+      setStatus: function(text) {
+        document.getElementById('status').innerHTML = text;
+      }
+    };
+    // Force load the engine
+    var s = document.createElement('script');
+    s.src = "d3wasm.js";
+    s.async = true;
+    document.body.appendChild(s);
+  </script>
+</body>
+</html>
